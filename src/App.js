@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
-import ToyCard from './components/ToyCard'
+
 
 
 class App extends React.Component{
@@ -63,10 +63,32 @@ class App extends React.Component{
           })
         })
   }
+  addLike = (id) => {
+        const elementsIndex = this.state.toys.findIndex(element => element.id == id )
+        let newArray = [...this.state.toys]
+        newArray[elementsIndex] = {...newArray[elementsIndex], likes: newArray[elementsIndex].likes + 1}
+        const currentLikes = this.state.toys[id].likes
+        // console.log(currentLikes)
+        // console.log(newArray[elementsIndex].likes)
+                fetch(`http://localhost:3000/toys/${id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                likes: newArray[elementsIndex].likes
+              }),
+            })
+              .then((r) => r.json())
+              .then((toyObj) => {
+                    this.setState({
+                      toys: newArray
+                    })
+                })
+      }
 
 
   render(){
-    console.log(this.state)
 
     return (
       <>
@@ -82,6 +104,7 @@ class App extends React.Component{
         </div>
         <ToyContainer allToys={this.state.toys}
          deleteToy={this.deleteToy}
+         addLike={this.addLike}
          />
 
          

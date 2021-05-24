@@ -41,6 +41,7 @@ export default class ToyContainer extends Component {
         key={toy.id}
         toy={toy}
         deleteToy={this.props.deleteToy}
+        addLike ={this.props.addLike}
         />
         
       ))
