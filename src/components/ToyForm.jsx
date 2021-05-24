@@ -33,7 +33,7 @@ class ToyForm extends Component {
            name="name" 
            placeholder="Enter a toy's name..." 
            className="input-text" 
-           value={this.state.toyName}
+           value={this.state.name}
            onChange={this.handleChange}
            />
           <br/>
@@ -42,7 +42,7 @@ class ToyForm extends Component {
           name="image" 
           placeholder="Enter a toy's image URL..." 
           className="input-text"
-          value={this.state.toyImageUrl}
+          value={this.state.image}
           onChange={this.handleChange}
           />
           <br/>

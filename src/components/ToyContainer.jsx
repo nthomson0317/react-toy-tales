@@ -5,17 +5,31 @@ export default class ToyContainer extends Component {
   constructor(props) {
     super(props)
     
-    this.state = {
-      toys: this.props.allToys
-    }
+    // this.state = {
+    //   toys: this.props.allToys
+    // }
   }
 
-   onDeleteToy = (id) => {
-    this.props.deleteToy(id);
-    // this.setState({
-    //   toys: [...this.state.toys.filter(toy => toy.id !==id)] 
-    // })
-  }
+
+//  deleteToy = (id) => {
+//           fetch(`http://localhost:3000/toys/${id}`, {
+//         method: "DELETE",
+//           })
+//         .then((r) => r.json())
+//         .then((toy) => {
+//           this.setState({
+//             toys: [...this.state.toys.filter(toy => toy.id !==id)] 
+//           })
+//         })
+  // }
+
+  //  onDeleteToy = (id) => {
+  //   this.props.deleteToy(id);
+  //   // () => alert('A new toy was deleted ');
+  //   // this.setState({
+  //   //   toys: [...this.state.toys.filter(toy => toy.id !==id)] 
+  //   // })
+  // }
 
   render() {
   return(
@@ -26,9 +40,9 @@ export default class ToyContainer extends Component {
         <ToyCard 
         key={toy.id}
         toy={toy}
-        deleteToy={this.onDeleteToy}
-        // data={this.props.state}
+        deleteToy={this.props.deleteToy}
         />
+        
       ))
       
       }

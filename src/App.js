@@ -4,13 +4,14 @@ import './App.css';
 import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
+import ToyCard from './components/ToyCard'
 
 
 class App extends React.Component{
   constructor(props){
     super(props)
 
-    this.deleteToy = this.deleteToy.bind(this);
+    // this.deleteToy = this.deleteToy.bind(this);
 
   this.state = {
     isLoading: false,
@@ -26,10 +27,10 @@ class App extends React.Component{
   }
 
     componentDidMount() {
-      // this.fetchToys()
       fetch("http://localhost:3000/toys")
     .then((r) => r.json())
     .then((toysArray) => this.setState({toys: toysArray}))
+    console.log(this.state)
   }
 
   
@@ -41,7 +42,8 @@ class App extends React.Component{
         },
         body: JSON.stringify({
           name: toyName,
-          image: toyImage
+          image: toyImage,
+          likes: 0
         }),
       })
         .then((r) => r.json())
@@ -81,6 +83,7 @@ class App extends React.Component{
         <ToyContainer allToys={this.state.toys}
          deleteToy={this.deleteToy}
          />
+
          
         
       </>

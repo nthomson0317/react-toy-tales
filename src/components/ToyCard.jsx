@@ -8,9 +8,9 @@ class ToyCard extends Component {
 
   
 
-  handleDelete = (event) => {
-    const id = event.target.id
-    event.preventDefault()
+  handleDelete = () => {
+    const id = this.props.toy.id
+    // event.preventDefault()
     this.props.deleteToy(id)
     console.log('handle delete fired')
     console.log(this.props)
@@ -20,7 +20,7 @@ class ToyCard extends Component {
   }
 
   render() {
-    // console.log(this.props.toy)
+    console.log(this.props.toy)
     return (
       <div className="card">
         <h2>{this.props.toy.name}</h2>
